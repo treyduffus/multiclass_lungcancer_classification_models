@@ -6,8 +6,8 @@ close all;   % Close all open figure windows
 % Load metadata and clinical data from JSON files
 % These files contain information about each case, including file IDs
 % and clinical diagnoses
-metadata = jsondecode(fileread('metadata.cart.2024-10-27.json'));
-clinical = jsondecode(fileread('clinical.cart.2024-10-27.json'));
+metadata = jsondecode(fileread('raw_data/metadata.cart.2024-10-27.json'));
+clinical = jsondecode(fileread('raw_data/clinical.cart.2024-10-27.json'));
 
 % Extract 'file_id' and 'case_id' from metadata for each entry
 % Initialize an array of structs 'labels' to store these identifiers
@@ -114,4 +114,4 @@ name = [name', 'Label']; % Add 'Label' as the last column name
 T1 = array2table(T, 'VariableNames', name);
 
 % Write the final table to a CSV file called 'Lung.csv'
-writetable(T1, 'Lung.csv');
+writetable(T1, 'processed_data\Lung.csv');
