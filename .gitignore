@@ -1,0 +1,14 @@
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore compiled MATLAB files and other temporary files
+*.mex*
+*.log
+*.asv
+*.tmp
+
+# Ignore the miRNA virtual environment directory (if applicable)
+.miRNA/
+
+# Ignore any local configuration or IDE-specific files
+*.vscode/
