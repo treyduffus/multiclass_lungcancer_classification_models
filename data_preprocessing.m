@@ -1,97 +1,168 @@
-clc;
-clear;
-close all;
+clc;         % Clear the command window
+clear;       % Remove all variables from the workspace
+close all;   % Close all open figure windows
 
 %================================================================%
-metadata = jsondecode(fileread('metadata.cart.2024-10-27.json'));
-clinical = jsondecode(fileread('clinical.cart.2024-10-27.json'));
+% Load metadata and clinical data from JSON files
+% These files contain information about each case, including file IDs
+% and clinical diagnoses
+metadata = jsondecode(fileread('raw_data/metadata.cart.2024-10-27.json'));
+clinical = jsondecode(fileread('raw_data/clinical.cart.2024-10-27.json'));
 
-% Process each file entry in the metadata
+% Extract 'file_id' and 'case_id' from metadata for each entry
+% Initialize an array of structs 'labels' to store these identifiers
 for i = 1:length(metadata)
-    labels(i).file_id = metadata{i, 1}.file_id;
-    labels(i).case_id = metadata{i, 1}.associated_entities.case_id;
+    labels(i).file_id = metadata{i, 1}.file_id;                    % Unique identifier for each file
+    labels(i).case_id = metadata{i, 1}.associated_entities.case_id; % Corresponding case identifier
 end
 
-% Continuing the labeling. From the clinical_data we'll the following info
-% from clinical → clinical(1).diagnoses.ajcc_pathologic_stage → 'Stage IIA'
+% Continue processing by associating clinical stage information
+% Extract the 'ajcc_pathologic_stage' from the clinical data
+% for each case, based on matching 'case_id'
+m = 0; % Counter for the number of matched cases
 
-m = 0;
-
-% Check for the 'ajcc_pathologic_stage' in the clinical data
+% Loop through clinical data to find matching case IDs in labels
 for i = 1:length(clinical)
-    disp(i)
+    disp(i); % Display current index in the command window for tracking progress
+    % Check if 'diagnoses' and 'ajcc_pathologic_stage' fields exist in the current clinical entry
     if isfield(clinical(i), 'diagnoses') && isfield(clinical(i).diagnoses, 'ajcc_pathologic_stage')
+        % Search for a matching case_id in the labels array
         for j = 1:length(labels)
             if strcmp(clinical(i).case_id, labels(j).case_id)
+                % If match is found, add the stage label to 'labels' struct
                 labels(j).label = clinical(i).diagnoses.ajcc_pathologic_stage;
-                m = m + 1;
-                disp(m)
+                m = m + 1; % Increment the match counter
+                disp(m);    % Display the match count
             end
         end
     end
 end
 
-%creating label 'l'
+% Create a numerical label array 'l' based on the pathological stage
+% Each stage (e.g., Stage IIA) is mapped to a specific integer
 l = [];
 
-% Assign numerical labels based on 'ajcc_pathologic_stage'
+% Assign numerical labels according to the 'ajcc_pathologic_stage' field
 for i = 1:length(labels)
-    disp(labels(i).label)
+    disp(labels(i).label); % Display the current stage label for verification
     if strcmp(labels(i).label, 'Stage I') || strcmp(labels(i).label, 'Stage IA') || strcmp(labels(i).label, 'Stage IB')
-        l = [l; 1];
+        l = [l; 1]; % Stage I variations are labeled as 1
     elseif strcmp(labels(i).label, 'Stage II') || strcmp(labels(i).label, 'Stage IIA') || strcmp(labels(i).label, 'Stage IIB')
-        l = [l; 2];
+        l = [l; 2]; % Stage II variations are labeled as 2
     elseif strcmp(labels(i).label, 'Stage III') || strcmp(labels(i).label, 'Stage IIIA') || strcmp(labels(i).label, 'Stage IIIB')
-        l = [l; 3];
+        l = [l; 3]; % Stage III variations are labeled as 3
     elseif strcmp(labels(i).label, 'Stage IV') || strcmp(labels(i).label, 'Stage IVA') || strcmp(labels(i).label, 'Stage IVB')
-        l = [l; 4];
+        l = [l; 4]; % Stage IV variations are labeled as 4
     else
-        l = [l; 0];
+        l = [l; 0]; % Assign 0 if stage information is unavailable
     end
 end
 
-%================================================%
-TrainDir = '.\Train'; % Change this path as needed
-TrainList = dir(TrainDir);
-TrainList = TrainList(3:end); % Skip first two entries ('.' and '..')
+% Extract the subtype labels and filter out empty values
+subtype_labels = {labels.subtype_label};
+subtype_labels = subtype_labels(~cellfun('isempty', subtype_labels)); % Remove empty cells
 
+% Find the unique values
+subtypes = unique(subtype_labels, 'stable');
+
+% Display each unique subtype
+for i = 1:length(subtypes)
+    disp(subtypes{i})
+end
+
+% Array containing Adenocarcinoma subtypes
+adeno = ['Mucinous adenocarcinoma', 'Papillary adenocarcinoma, NOS', 'Adenocarcinoma, NOS', 'Bronchiolo-alveolar carcinoma, non-mucinous'...
+     'Adenocarcinoma with mixed subtypes', 'Acinar cell carcinoma', 'Micropapillary carcinoma, NOS', 'Solid carcinoma, NOS', 'Signet ring cell carcinoma'...
+     'Clear cell adenocarcinoma, NOS', 'Bronchiolo-alveolar adenocarcinoma, NOS','Bronchio-alveolar carcinoma, mucinous']
+
+% Array containing Squamous Cell Carcinoma subtypes
+squamous = ['Squamous cell carcinoma, NOS', 'Basaloid squamous cell carcinoma', 'Squamous cell carcinoma, keratinizing, NOS', 'Papillary squamous cell carcinoma' ]
+
+% Large Cell Carcinoma
+large_cell = []
+
+% Array containing non-small cell lung cancer types
+nsclc = []
+
+% Array containing mesothelimoa lung cancer types
+mesothelimoa = ['Epithelioid mesothelioma, malignant']
+
+sclc = ['Squamous cell carcinoma, small cell, nonkeratinizing']
+
+% Assign numerical labels for top level subtypes based on 'primary_diagnosis'
+% 0 == healthy, 1 == small cell, 2 == non-small cell, 3 == Mesothelioma
+k = []
+for i = 1:length(labels)
+    if ismember(labels(i).subtype_label, adeno)
+        k = [k; 1];
+    elseif ismember(labels(i).subtype_label, squamous)
+        k = [k; 2];
+    elseif ismember(labels(i).subtype_label, large_cell)
+        k = [k; 3]
+    elseif ismember(labels(i).subtype_label, mesothelimoa)
+        k = [k; 4];
+    else
+        k = [k; 0]
+    end
+end
+
+% Append subtype lables to stage lables
+l = [l, k]
+
+%================================================%
+% Define the directory containing the training files
+TrainDir = '.\Train'; % Update this path if necessary
+TrainList = dir(TrainDir); % List all items in the specified directory
+TrainList = TrainList(3:end); % Skip the first two entries ('.' and '..') 
+
+% Initialize storage for file data
 s = [];
-m = 1;
-% Read Train File & Test File
+m = 1; % Counter for indexed data storage
 TrainData = [];
 TrainLabel = cell(1, 0);
 
+% Loop over each subdirectory in TrainDir
 for i = 1:length(TrainList)
-    % Updated file filter to match .quantific files
-    subTrainList = dir([TrainDir '\' TrainList(i).name '\*.mirnas.quantific']); 
+    % Find all .mirnas.quantific files in the current subdirectory
+    subTrainList = dir([TrainDir '\' TrainList(i).name '\*.mirnas.quantific']);
     
     for j = 1:length(subTrainList)
-        % Read the quantific file with explicit file type and delimiter
+        % Read the .mirnas.quantific file as a table with tab delimiters
         s{m}.data = readtable([TrainDir '\' TrainList(i).name '\' subTrainList(j).name], ...
             'FileType', 'text', ...
-            'Delimiter', '\t');  % Assuming tab-delimited
+            'Delimiter', '\t');  % Assuming file is tab-delimited
         
+        % Check if the data has the expected 1881 rows (one per miRNA)
         if size(s{m}.data, 1) ~= 1881
-            disp('Ali')
+            disp('Ali'); % Display 'Ali' as a simple alert if row count does not match
         end
         
+        % Store the file identifier in the struct array 's'
         s{m}.file_id = TrainList(i).name;
-        m = m + 1;
+        m = m + 1; % Increment the struct index for the next file
     end
 end
 
-
+% Extract the third column ('reads_per_million_miRNA_mapped') from each file's data
+% Combine this column across all files to create a feature matrix
 data = [];
 for i = 1:length(s)
+    % Convert the third column to an array and append to 'data' matrix
     data = [data table2array(s{i}.data(:, 3))];
 end
 
+% Transpose the data matrix so each row corresponds to a sample
+T = data'; 
 
-T = data';
+% Append the label vector 'l' as the last column in T
 T = [T l];
 
-name = table2cell(s{1}.data(:, 1));
-name = [name', 'Label'];
+% Create column names for the output CSV file based on miRNA IDs from the first file
+name = table2cell(s{1}.data(:, 1)); % Extract miRNA IDs as cell array
+name = [name', 'Label']; % Add 'Label' as the last column name
 
+% Convert the matrix T to a table with specified column names
 T1 = array2table(T, 'VariableNames', name);
-writetable(T1, 'Lung.csv');
+
+% Write the final table to a CSV file called 'Lung.csv'
+writetable(T1, 'processed_data\Lung.csv');
