@@ -9,6 +9,7 @@
 
 # Ignore the miRNA virtual environment directory (if applicable)
 .miRNA/
+.venv/
 
 # Ignore any local configuration or IDE-specific files
 *.vscode/
