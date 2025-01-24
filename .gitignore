@@ -7,9 +7,15 @@
 *.asv
 *.tmp
 
+<<<<<<< HEAD
 # Ignore Python cache files
 __pycache__/
 *.py[cod]
+=======
+# Ignore the miRNA virtual environment directory (if applicable)
+.miRNA/
+.venv/
+>>>>>>> 599b42b512ae01eed227e4b009949cd2bc635277
 
 # Ignore virtual environments
 .miRNA/
