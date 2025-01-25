@@ -7,9 +7,26 @@
 *.asv
 *.tmp
 
+<<<<<<< HEAD
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+=======
 # Ignore the miRNA virtual environment directory (if applicable)
 .miRNA/
 .venv/
+>>>>>>> 599b42b512ae01eed227e4b009949cd2bc635277
 
-# Ignore any local configuration or IDE-specific files
-*.vscode/
+# Ignore virtual environments
+.miRNA/
+.venv/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore local configuration or IDE-specific files
+.vscode/
+
+# Optional: Ignore raw datasets and temporary directories
+# raw_data/
+# temp/
