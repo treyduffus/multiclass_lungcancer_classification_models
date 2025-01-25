@@ -3,5 +3,5 @@
     "Test Set Size": 566,
     "Kernel": "rbf",
     "Class Weights": "balanced",
-    "Accuracy": 0.8745583038869258
+    "Accuracy": 0.21201413427561838
 }
