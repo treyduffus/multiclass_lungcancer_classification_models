@@ -1,8 +1,8 @@
 {
-    "Method": "RFE",
+    "Method": "rfe",
     "Training Set Size": 2264,
     "Test Set Size": 566,
     "Kernel": "rbf",
     "Class Weights": "balanced",
-    "Accuracy": 0.29328621908127206
+    "Accuracy": 0.519434628975265
 }
