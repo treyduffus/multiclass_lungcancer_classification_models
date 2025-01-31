@@ -1,8 +1,7 @@
 {
-    "Method": "chi_squared",
     "Training Set Size": 2264,
     "Test Set Size": 566,
     "Kernel": "rbf",
     "Class Weights": "balanced",
-    "Accuracy": 0.9929
+    "Accuracy": 0.9947
 }
