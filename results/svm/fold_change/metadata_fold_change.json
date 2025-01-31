@@ -1,0 +1,8 @@
+{
+    "Method": "fold_change",
+    "Training Set Size": 2264,
+    "Test Set Size": 566,
+    "Kernel": "rbf",
+    "Class Weights": "balanced",
+    "Accuracy": 0.4523
+}
