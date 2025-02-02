@@ -1,7 +1,11 @@
 {
-    "Training Set Size": 2264,
-    "Test Set Size": 566,
-    "Kernel": "rbf",
-    "Class Weights": "balanced",
-    "Accuracy": 0.9947
+    "best_hyperparameters": {
+        "estimator__C": 10,
+        "estimator__gamma": "scale",
+        "estimator__kernel": "rbf"
+    },
+    "stage_accuracy": 0.9815668202764977,
+    "subtype_accuracy": 0.9815668202764977,
+    "train_set_size": 866,
+    "test_set_size": 217
 }
