@@ -1,11 +1,24 @@
 {
-    "best_hyperparameters": {
-        "estimator__C": 10,
-        "estimator__gamma": "scale",
-        "estimator__kernel": "rbf"
+    "diagnosis_hyperparameters": {
+        "C": 0.1,
+        "gamma": "scale",
+        "kernel": "rbf"
     },
-    "stage_accuracy": 0.9815668202764977,
-    "subtype_accuracy": 0.9815668202764977,
-    "train_set_size": 866,
-    "test_set_size": 217
+    "stage_hyperparameters": {
+        "C": 10,
+        "gamma": "scale",
+        "kernel": "rbf"
+    },
+    "subtype_hyperparameters": {
+        "C": 10,
+        "gamma": "scale",
+        "kernel": "rbf"
+    },
+    "diagnosis_accuracy": 1.0,
+    "stage_accuracy": 0.9488372093023256,
+    "subtype_accuracy": 0.9674418604651163,
+    "train_set_size_diagnosis": 866,
+    "train_set_size_stage": 857,
+    "test_set_size_diagnosis": 217,
+    "test_set_size_stage": 215
 }
