@@ -10,7 +10,7 @@
         "kernel": "rbf"
     },
     "stage_accuracy": 0.5255813953488372,
-    "subtype_accuracy": 0.4790697674418605,
+    "subtype_accuracy": 0.49767441860465117,
     "stage_confusion_matrix": [
         [
             111,
@@ -39,12 +39,12 @@
     ],
     "subtype_confusion_matrix": [
         [
-            59,
-            53
+            54,
+            58
         ],
         [
-            59,
-            44
+            50,
+            53
         ]
     ],
     "train_set_size": "N/A",
