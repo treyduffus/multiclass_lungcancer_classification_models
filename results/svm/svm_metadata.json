@@ -1,6 +1,6 @@
 {
     "diagnosis_hyperparameters": {
-        "C": 0.1,
+        "C": 1,
         "gamma": "scale",
         "kernel": "rbf"
     },
@@ -15,10 +15,8 @@
         "kernel": "rbf"
     },
     "diagnosis_accuracy": 1.0,
-    "stage_accuracy": 0.9441860465116279,
-    "subtype_accuracy": 0.9674418604651163,
-    "train_set_size_diagnosis": 866,
-    "train_set_size_stage": 857,
-    "test_set_size_diagnosis": 217,
-    "test_set_size_stage": 215
+    "stage_accuracy": 0.9585253456221198,
+    "subtype_accuracy": 0.9815668202764977,
+    "train_size": 866,
+    "test_size": 217
 }
