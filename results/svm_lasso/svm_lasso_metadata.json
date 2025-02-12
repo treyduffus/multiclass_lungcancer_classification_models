@@ -1,0 +1,52 @@
+{
+    "stage_hyperparameters": {
+        "C": 10,
+        "gamma": 0.1,
+        "kernel": "rbf"
+    },
+    "subtype_hyperparameters": {
+        "C": 100,
+        "gamma": "scale",
+        "kernel": "rbf"
+    },
+    "stage_accuracy": 0.5255813953488372,
+    "subtype_accuracy": 0.5627906976744186,
+    "stage_confusion_matrix": [
+        [
+            113,
+            0,
+            0,
+            0
+        ],
+        [
+            62,
+            0,
+            0,
+            0
+        ],
+        [
+            35,
+            0,
+            0,
+            0
+        ],
+        [
+            5,
+            0,
+            0,
+            0
+        ]
+    ],
+    "subtype_confusion_matrix": [
+        [
+            70,
+            42
+        ],
+        [
+            52,
+            51
+        ]
+    ],
+    "train_set_size": 866,
+    "test_set_size": 217
+}
