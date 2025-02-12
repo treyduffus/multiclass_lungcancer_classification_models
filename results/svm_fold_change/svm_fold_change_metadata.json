@@ -9,44 +9,62 @@
         "gamma": "scale",
         "kernel": "rbf"
     },
-    "stage_accuracy": 0.786046511627907,
-    "subtype_accuracy": 0.5116279069767442,
+    "stage_accuracy": 0.40930232558139534,
+    "subtype_accuracy": 0.5348837209302325,
     "stage_confusion_matrix": [
         [
-            111,
-            2,
+            0,
+            1,
+            1,
             0,
             0
         ],
         [
-            22,
-            39,
-            1,
-            0
-        ],
-        [
-            8,
-            7,
-            19,
+            0,
+            71,
+            24,
+            16,
             1
         ],
         [
-            1,
+            0,
+            43,
+            14,
+            5,
+            0
+        ],
+        [
+            0,
+            23,
+            8,
+            3,
+            0
+        ],
+        [
             0,
             4,
+            1,
+            0,
             0
         ]
     ],
     "subtype_confusion_matrix": [
         [
-            61,
-            51
+            0,
+            1,
+            1
         ],
         [
-            54,
-            49
+            0,
+            59,
+            53
+        ],
+        [
+            0,
+            45,
+            56
         ]
     ],
-    "train_set_size": "N/A",
-    "test_set_size": "N/A"
+    "train_set_size": 866,
+    "test_set_size": 217
 }
