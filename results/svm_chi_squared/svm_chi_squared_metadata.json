@@ -1,4 +1,9 @@
 {
+    "diagnosis_hyperparameters": {
+        "C": 0.1,
+        "gamma": 0.1,
+        "kernel": "rbf"
+    },
     "stage_hyperparameters": {
         "C": 100,
         "gamma": "scale",
@@ -9,71 +14,12 @@
         "gamma": 0.1,
         "kernel": "rbf"
     },
-    "stage_accuracy": 0.46543778801843316,
-    "subtype_accuracy": 0.5207373271889401,
-    "stage_confusion_matrix": [
-        [
-            0,
-            2,
-            0,
-            0,
-            0
-        ],
-        [
-            0,
-            79,
-            26,
-            8,
-            0
-        ],
-        [
-            0,
-            36,
-            18,
-            7,
-            0
-        ],
-        [
-            0,
-            23,
-            8,
-            4,
-            0
-        ],
-        [
-            0,
-            5,
-            0,
-            1,
-            0
-        ]
-    ],
-    "subtype_confusion_matrix": [
-        [
-            0,
-            2,
-            0,
-            0
-        ],
-        [
-            0,
-            112,
-            0,
-            0
-        ],
-        [
-            0,
-            102,
-            0,
-            0
-        ],
-        [
-            0,
-            0,
-            0,
-            1
-        ]
-    ],
+    "diagnosis_accuracy": "N/A",
+    "stage_accuracy": "N/A",
+    "subtype_accuracy": "N/A",
+    "diagnosis_confusion_matrix": "N/A",
+    "stage_confusion_matrix": "N/A",
+    "subtype_confusion_matrix": "N/A",
     "train_set_size": 874,
     "test_set_size": 219
 }

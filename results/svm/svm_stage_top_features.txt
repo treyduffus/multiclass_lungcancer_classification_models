@@ -1,0 +1,10 @@
+hsa-mir-8082
+hsa-mir-4300
+hsa-mir-6071
+hsa-mir-526a-2
+hsa-mir-518f
+hsa-mir-5583-1
+hsa-mir-520e
+hsa-mir-523
+hsa-mir-515-2
+hsa-mir-8066
