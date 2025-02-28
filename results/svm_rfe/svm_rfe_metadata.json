@@ -9,44 +9,10 @@
         "gamma": 1,
         "kernel": "rbf"
     },
-    "stage_accuracy": 0.5255813953488372,
-    "subtype_accuracy": 0.5162790697674419,
-    "stage_confusion_matrix": [
-        [
-            113,
-            0,
-            0,
-            0
-        ],
-        [
-            62,
-            0,
-            0,
-            0
-        ],
-        [
-            35,
-            0,
-            0,
-            0
-        ],
-        [
-            5,
-            0,
-            0,
-            0
-        ]
-    ],
-    "subtype_confusion_matrix": [
-        [
-            111,
-            1
-        ],
-        [
-            103,
-            0
-        ]
-    ],
+    "stage_accuracy": "N/A",
+    "subtype_accuracy": "N/A",
+    "stage_confusion_matrix": "N/A",
+    "subtype_confusion_matrix": "N/A",
     "train_set_size": 866,
     "test_set_size": 217
 }

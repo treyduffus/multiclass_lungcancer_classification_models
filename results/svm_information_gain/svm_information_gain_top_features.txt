@@ -1,0 +1,10 @@
+hsa-mir-2681
+hsa-mir-4733
+hsa-mir-543
+hsa-mir-548au
+hsa-mir-5685
+hsa-mir-3689b
+hsa-mir-6129
+hsa-mir-4731
+hsa-mir-5684
+hsa-mir-3138
