@@ -1,0 +1,16 @@
+RF_Diagnosis Classification Report
+==================================================
+Accuracy: 0.9909
+Sensitivity: 1.0000
+Specificity: 0.0000
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.0000    0.0000    0.0000         2
+           1     0.9909    1.0000    0.9954       217
+
+    accuracy                         0.9909       219
+   macro avg     0.4954    0.5000    0.4977       219
+weighted avg     0.9818    0.9909    0.9863       219

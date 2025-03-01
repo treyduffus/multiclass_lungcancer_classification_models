@@ -1,0 +1,19 @@
+RF_Stage Classification Report
+==================================================
+Accuracy: 0.5114
+Sensitivity: 0.1965
+Specificity: 0.2581
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.0000    0.0000    0.0000         2
+           1     0.5161    0.9825    0.6767       114
+           2     0.0000    0.0000    0.0000        62
+           3     0.0000    0.0000    0.0000        35
+           4     0.0000    0.0000    0.0000         6
+
+    accuracy                         0.5114       219
+   macro avg     0.1032    0.1965    0.1353       219
+weighted avg     0.2687    0.5114    0.3523       219
