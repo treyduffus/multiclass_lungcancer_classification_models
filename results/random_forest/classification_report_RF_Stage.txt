@@ -1,11 +1,6 @@
 RF_Stage Classification Report
 ==================================================
-Accuracy: 0.5114
-Sensitivity: 0.1965
-Specificity: 0.2581
 
-
-Classification Report:
               precision    recall  f1-score   support
 
            0     0.0000    0.0000    0.0000         2

@@ -1,11 +1,6 @@
 RF_Diagnosis Classification Report
 ==================================================
-Accuracy: 0.9909
-Sensitivity: 1.0000
-Specificity: 0.0000
 
-
-Classification Report:
               precision    recall  f1-score   support
 
            0     0.0000    0.0000    0.0000         2

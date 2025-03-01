@@ -1,11 +1,6 @@
 RF_Subtype Classification Report
 ==================================================
-Accuracy: 0.5388
-Sensitivity: 0.3596
-Specificity: 0.5371
 
-
-Classification Report:
               precision    recall  f1-score   support
 
            0     0.0000    0.0000    0.0000         2
