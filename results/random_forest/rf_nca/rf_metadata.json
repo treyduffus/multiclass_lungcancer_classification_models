@@ -1,0 +1,50 @@
+{
+    "diagnosis_classification_report": "              precision    recall  f1-score   support\n\n           0     0.0000    0.0000    0.0000         2\n           1     0.9909    1.0000    0.9954       217\n\n    accuracy                         0.9909       219\n   macro avg     0.4954    0.5000    0.4977       219\nweighted avg     0.9818    0.9909    0.9863       219\n",
+    "stage_classification_report": "              precision    recall  f1-score   support\n\n           0     0.0000    0.0000    0.0000         2\n           1     0.5258    0.9825    0.6850       114\n           2     0.5000    0.0484    0.0882        62\n           3     0.0000    0.0000    0.0000        35\n           4     0.0000    0.0000    0.0000         6\n\n    accuracy                         0.5251       219\n   macro avg     0.2052    0.2062    0.1547       219\nweighted avg     0.4153    0.5251    0.3816       219\n",
+    "subtype_classification_report": "              precision    recall  f1-score   support\n\n           0     0.0000    0.0000    0.0000         2\n           1     0.4915    0.5133    0.5022       113\n           2     0.4554    0.4423    0.4488       104\n\n    accuracy                         0.4749       219\n   macro avg     0.3157    0.3185    0.3170       219\nweighted avg     0.4699    0.4749    0.4722       219\n",
+    "diagnosis_accuracy": 0.9908675799086758,
+    "stage_accuracy": 0.5251141552511416,
+    "subtype_accuracy": 0.4748858447488584,
+    "diagnosis_sensitivity": 1.0,
+    "stage_sensitivity": 0.20616864742501412,
+    "subtype_sensitivity": 0.31852734286362605,
+    "diagnosis_specificity": 0.0,
+    "stage_specificity": 0.2051643192488263,
+    "subtype_specificity": 0.31565698942775633,
+    "top_10_features_diagnosis": [
+        "hsa-mir-202",
+        "hsa-mir-10a",
+        "hsa-mir-1304",
+        "hsa-mir-5690",
+        "hsa-mir-3655",
+        "hsa-mir-548t",
+        "hsa-mir-4726",
+        "hsa-mir-4802",
+        "hsa-mir-5696",
+        "hsa-mir-548j"
+    ],
+    "top_10_features_stage": [
+        "hsa-mir-10a",
+        "hsa-mir-202",
+        "hsa-mir-3678",
+        "hsa-mir-187",
+        "hsa-mir-5690",
+        "hsa-mir-1304",
+        "hsa-mir-34c",
+        "hsa-mir-3690-1",
+        "hsa-mir-5696",
+        "hsa-mir-1468"
+    ],
+    "top_10_features_subtype": [
+        "hsa-mir-202",
+        "hsa-mir-3065",
+        "hsa-mir-10a",
+        "hsa-mir-3678",
+        "hsa-mir-4999",
+        "hsa-mir-1304",
+        "hsa-mir-4802",
+        "hsa-mir-3690-1",
+        "hsa-mir-5690",
+        "hsa-mir-3654"
+    ]
+}
