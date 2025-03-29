@@ -1,12 +1,12 @@
 {
-    "stage_accuracy": 0.9360730593607306,
-    "stage_sensitivity": 0.9202085859810817,
-    "stage_specificity": 0.901538821191666,
+    "stage_accuracy": 0.5205479452054794,
+    "stage_sensitivity": 0.2,
+    "stage_specificity": NaN,
     "top_10_features_stage": [
         "hsa-mir-4271",
         "hsa-mir-4280",
-        "hsa-mir-3973",
         "hsa-mir-8082",
+        "hsa-mir-3973",
         "hsa-mir-4257",
         "hsa-mir-1253",
         "hsa-mir-8052",
@@ -16,5 +16,6 @@
     ],
     "train_size": 872,
     "test_size": 219,
-    "target_task": "stage"
+    "target_task": "stage",
+    "model_file_format": "joblib"
 }

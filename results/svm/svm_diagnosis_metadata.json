@@ -1,8 +1,8 @@
 {
-    "diagnosis_hyperparameters": "              precision    recall  f1-score   support\n\n           0       1.00      0.50      0.67         2\n           1       1.00      1.00      1.00       217\n\n    accuracy                           1.00       219\n   macro avg       1.00      0.75      0.83       219\nweighted avg       1.00      1.00      0.99       219\n",
-    "diagnosis_accuracy": 0.9954337899543378,
+    "diagnosis_hyperparameters": "              precision    recall  f1-score   support\n\n           0       0.00      0.00      0.00         2\n           1       0.99      1.00      1.00       217\n\n    accuracy                           0.99       219\n   macro avg       0.50      0.50      0.50       219\nweighted avg       0.98      0.99      0.99       219\n",
+    "diagnosis_accuracy": 0.9908675799086758,
     "sensitivity_diagnosis": 1.0,
-    "specificity_diagnosis": 0.5,
+    "specificity_diagnosis": 0.0,
     "top_10_features_diagnosis": [
         "hsa-mir-1471",
         "hsa-mir-4271",
@@ -16,5 +16,6 @@
         "hsa-mir-523"
     ],
     "train_size": 872,
-    "test_size": 219
+    "test_size": 219,
+    "model_file_format": "joblib"
 }

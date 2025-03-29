@@ -1,8 +1,8 @@
 {
-    "subtype_hyperparameters": "              precision    recall  f1-score   support\n\n           0       0.67      1.00      0.80         2\n           1       0.99      0.96      0.98       113\n           2       0.97      0.99      0.98       104\n\n    accuracy                           0.98       219\n   macro avg       0.88      0.98      0.92       219\nweighted avg       0.98      0.98      0.98       219\n",
-    "subtype_accuracy": 0.9771689497716894,
-    "sensitivity_subtype": 0.9849954617653732,
-    "specificity_subtype": 0.876424623594435,
+    "subtype_hyperparameters": "              precision    recall  f1-score   support\n\n           0       0.00      0.00      0.00         2\n           1       0.52      1.00      0.68       113\n           2       0.00      0.00      0.00       104\n\n    accuracy                           0.52       219\n   macro avg       0.17      0.33      0.23       219\nweighted avg       0.27      0.52      0.35       219\n",
+    "subtype_accuracy": 0.5159817351598174,
+    "sensitivity_subtype": 0.3333333333333333,
+    "specificity_subtype": NaN,
     "top_10_features_subtype": [
         "hsa-mir-4280",
         "hsa-mir-3973",
@@ -16,5 +16,6 @@
         "hsa-mir-451b"
     ],
     "train_size": 872,
-    "test_size": 219
+    "test_size": 219,
+    "model_file_format": "joblib"
 }
