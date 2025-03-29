@@ -1,0 +1,7 @@
+,fold_change,chi_squared,information_gain,lasso,nca,rfe
+fold_change,500,268,145,167,217,10
+chi_squared,268,500,119,223,261,22
+information_gain,145,119,500,126,131,16
+lasso,167,223,126,500,228,21
+nca,217,261,131,228,500,22
+rfe,10,22,16,21,22,50
