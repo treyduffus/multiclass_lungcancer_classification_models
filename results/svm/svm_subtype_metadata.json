@@ -1,0 +1,20 @@
+{
+    "subtype_hyperparameters": "              precision    recall  f1-score   support\n\n           0       0.67      1.00      0.80         2\n           1       0.99      0.96      0.98       113\n           2       0.97      0.99      0.98       104\n\n    accuracy                           0.98       219\n   macro avg       0.88      0.98      0.92       219\nweighted avg       0.98      0.98      0.98       219\n",
+    "subtype_accuracy": 0.9771689497716894,
+    "sensitivity_subtype": 0.9849954617653732,
+    "specificity_subtype": 0.876424623594435,
+    "top_10_features_subtype": [
+        "hsa-mir-4280",
+        "hsa-mir-3973",
+        "hsa-mir-8082",
+        "hsa-mir-4257",
+        "hsa-mir-526a-2",
+        "hsa-mir-1253",
+        "hsa-mir-8052",
+        "hsa-mir-4300",
+        "hsa-mir-520e",
+        "hsa-mir-451b"
+    ],
+    "train_size": 872,
+    "test_size": 219
+}
