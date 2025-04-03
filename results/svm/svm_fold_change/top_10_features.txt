@@ -1,0 +1,10 @@
+hsa-mir-548ap
+hsa-mir-4704
+hsa-mir-302d
+hsa-mir-4292
+hsa-mir-1253
+hsa-mir-3621
+hsa-mir-3672
+hsa-mir-7852
+hsa-mir-1297
+hsa-mir-1263
