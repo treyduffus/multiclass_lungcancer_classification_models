@@ -1,4 +1,9 @@
 {
+    "diagnosis_hyperparameters": {
+        "C": 0.1,
+        "gamma": 0.1,
+        "kernel": "rbf"
+    },
     "stage_hyperparameters": {
         "C": 10,
         "gamma": 0.1,
@@ -8,11 +13,5 @@
         "C": 10,
         "gamma": "scale",
         "kernel": "rbf"
-    },
-    "stage_accuracy": "N/A",
-    "subtype_accuracy": "N/A",
-    "stage_confusion_matrix": "N/A",
-    "subtype_confusion_matrix": "N/A",
-    "train_set_size": 866,
-    "test_set_size": 217
+    }
 }
