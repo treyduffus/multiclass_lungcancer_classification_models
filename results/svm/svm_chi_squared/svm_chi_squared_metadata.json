@@ -17,9 +17,6 @@
     "diagnosis_accuracy": "N/A",
     "stage_accuracy": "N/A",
     "subtype_accuracy": "N/A",
-    "diagnosis_confusion_matrix": "N/A",
-    "stage_confusion_matrix": "N/A",
-    "subtype_confusion_matrix": "N/A",
     "train_set_size": 874,
     "test_set_size": 219
 }
