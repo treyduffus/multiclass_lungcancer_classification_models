@@ -7,7 +7,12 @@
 ---
 
 ## 📜 Project Description
-This project focuses on classifying **lung cancer stages and subtypes** using **miRNA expression data** and **machine learning models**. Our goal is to **differentiate between cancerous and non-cancerous tissues**, identify **subtypes**, and improve classification accuracy.
+This project focuses on classifying **lung cancer cases (cancer vs. healthy)** using **miRNA expression data** and **machine learning models**. Our goal is to identify **robust, interpretable miRNA biomarkers** for early diagnosis.
+
+### **Cancer Staging and Subtypes (Exploratory)**
+While the primary focus is on binary diagnosis, we also explored:
+- **Stage**: Pathologic stage (I–IV)  
+- **Subtype**: Adenocarcinoma vs. Squamous Cell Carcinoma
 
 ### **Cancer Stages**
 Lung cancer staging follows `ajcc_pathologic_stage`:
@@ -23,147 +28,112 @@ We classify lung cancer into the following categories:
 - **1** → Adenocarcinoma  
 - **2** → Squamous Cell Carcinoma  
 
----
-
-## 🛠️ **Feature Selection Methods**
-To improve model performance, we applied **multiple feature selection techniques** to reduce the miRNA dataset's dimensionality.
-
-### ✅ **Feature Selection Methods Implemented**
-| **Method** | **Description** |
-|------------|------------------------------------------------|
-| **Fold-Change** | Identifies differentially expressed miRNAs. |
-| **Chi-Squared** | Ranks miRNAs based on statistical association with labels. |
-| **Information Gain** | Measures how much information miRNAs contribute to classification. |
-| **LASSO (L1 Regularization)** | Selects important features by penalizing irrelevant ones. |
-| **Recursive Feature Elimination (RFE)** | Iteratively removes the least important features. |
-| **Neighborhood Components Analysis (NCA)** | Learns a transformation that improves classification. |
-| **Random Forest Feature Importance** | Uses tree-based ranking of features. |
-
-### **Feature Selection Results**
-- **Final feature selection combines top miRNAs from multiple methods.**
-- These features are used to train **SVM and Random Forest models**.
+These tasks were found to be significantly affected by class imbalance and overlapping biological signals. Therefore, they are included as exploratory findings.
 
 ---
 
-## 🖥️ **Machine Learning Workflow**
-We train **multiple classification models** for **stage and subtype prediction**:
+## 🛠️ Feature Selection Pipeline
+We applied a comprehensive suite of **eight feature selection methods** to reduce dimensionality and identify stable, high-impact biomarkers:
 
-| **Model** | **Purpose** |
-|-----------|--------------------------|
-| **SVM (Fold-Change Only)** | Baseline using only Fold-Change features. |
-| **SVM (All Features)** | Uses all feature selection methods for improved accuracy. |
-| **Random Forest** | Uses tree-based feature importance. |
+| **Method** | **Purpose** |
+|-----------|-------------|
+| Fold-Change | Detects differentially expressed miRNAs. |
+| Chi-Squared | Assesses statistical dependence on labels. |
+| Information Gain | Measures reduction in class uncertainty. |
+| LASSO | Applies L1 penalty to remove irrelevant features. |
+| Recursive Feature Elimination (RFE) | Eliminates least useful features iteratively. |
+| Neighborhood Component Analysis (NCA) | Learns a distance metric to weight features. |
+| Random Forest Importance | Uses tree-based impurity reduction for ranking. |
+| **VTFS** | Deep learning method using attention weights (Transformer-based). |
 
-### 📊 **Evaluation Metrics**
-Each model is evaluated using:
-- **Accuracy** ✅
-- **Precision, Recall, F1-Score** ✅
-- **Confusion Matrices** ✅
-- **ROC-AUC for binary classification (Diagnosis: Cancer vs. Healthy)** ✅
+## 🧠 Deep Learning Integrations
 
----
+### VTFS (Variational Transformer Feature Selection)
+VTFS was used for **feature selection only** and showed that subsets as small as **1–3 miRNAs** could still yield high performance when used in classifiers like SVM.
 
-## 🔬 **Model Training & Experimentation**
-### **Training Data**
-- **miRNA expression levels** are extracted from `.quantification.txt` files.
-- Dataset contains **1881 miRNA features** per sample.
-- Labels include **stage (0-4) and subtype (0-4)**.
-
-### **Training Process**
-- **Train-test split (80-20%)** with **stratified sampling**.
-- **Feature scaling & normalization** applied after split.
-- **Hyperparameter tuning** using **GridSearchCV**.
-
-### **Current Results**
-| **Model** | **Diagnosis Accuracy** | **Stage Accuracy** | **Subtype Accuracy** |
-|-----------|-------------------------|--------------------|----------------------|
-| **SVM (All Features)** | **99.0%** | **52.1%** | **49.1%** |
-| **Random Forest** | **99.1%** | **51.6%** | **53.9%** |
+### SAINT
+SAINT is a transformer-based classifier designed for tabular data. It achieved the **highest F1-score** and **best specificity** among all tested models for binary classification.
 
 ---
 
-## 🚀 **Future Development**
-### **1️⃣ GUI Development**
-- A **user-friendly interface** for **clinicians** to visualize **miRNA expression and model predictions**.
+## 🖥️ Machine Learning Models
+We trained and evaluated the following classifiers on various tasks:
 
-### **2️⃣ Deep Learning**
-- Implement **transformer-based models** and **feature interpretability visualizations**.
+| **Model** | **Role** |
+|----------|-----------|
+| Support Vector Machine (SVM) | Classical kernel-based model. |
+| Random Forest (RF) | Tree-based ensemble classifier. |
+| SAINT | Deep transformer-based classifier for tabular input. |
 
-### **3️⃣ Final Validation**
-- **Validate the system using external datasets**.
-- Compare performance with **existing diagnostic tools**.
+Each model was trained on:
+- Diagnosis (primary)
+- Stage classification (exploratory)
+- Subtype prediction (exploratory)
 
 ---
 
-## ⚙️ **How to Run**
-### **Setup**
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-repo/lung-cancer-classification.git
-   cd lung-cancer-classification
-   ```
+## 📊 Evaluation Metrics
+All models were evaluated using the following metrics:
+- Accuracy
+- Sensitivity (Recall)
+- Specificity
+- F1-Score
+- Confusion Matrix
 
-2. **Create a virtual environment** (optional, but recommended):
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
-   ```
+All evaluations were performed **after correcting for label leakage**.
 
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+---
 
-### **Run Feature Selection**
+## 📈 Results Summary
+
+### ✅ Diagnosis (Cancer vs. Healthy)
+| Model | Accuracy | Recall | Specificity | F1-Score |
+|-------|----------|--------|-------------|----------|
+| SVM   | 99.0%    | 100%   | 0%          | ~0.99    |
+| RF    | 99.1%    | 100%   | 0%          | ~0.99    |
+| SAINT | 99.5%    | 100%   | 99.0%       | 0.9976   |
+
+### 🚧 Stage Classification (Exploratory)
+| Model | Accuracy | Macro Recall |
+|-------|----------|---------------|
+| SVM   | 52.1%    | Low           |
+| RF    | 51.6%    | Slightly Better |
+| SAINT | 59.7%    | Moderate      |
+
+### 🔬 Subtype Classification (Exploratory)
+| Model | Accuracy | Recall (SqCC) |
+|-------|----------|----------------|
+| SVM   | 49.1%    | Collapsed      |
+| RF    | 53.9%    | Improved       |
+| SAINT | 47.0%    | Balanced       |
+
+---
+
+## 🚀 Future Work
+- Apply consensus features in external validations.
+- Extend with additional data types (e.g., DNA methylation, proteomics).
+- Build visual dashboards for model explainability.
+- Expand SAINT and VTFS evaluation across other cancer datasets.
+
+---
+
+## ⚙️ How to Run
 ```bash
-python feature_selection/fold_change.ipynb
-python feature_selection/chi_squared.ipynb
-python feature_selection/information_gain.ipynb
-python feature_selection/lasso.ipynb
-python feature_selection/recursive_feature_elimination.ipynb
-python feature_selection/neighborhood_components_analysis.ipynb
-python feature_selection/random_forest_importance.ipynb
-```
+# Clone the repo
+$ git clone https://github.com/your-repo/lung-cancer-classification.git
+$ cd lung-cancer-classification
 
-### **Train & Evaluate SVM Models**
-```bash
-jupyter notebook classification/svm_classifier.ipynb
-```
+# Set up environment
+$ python -m venv .venv
+$ source .venv/bin/activate
+$ pip install -r requirements.txt
 
-### **Train & Evaluate Random Forest**
-```bash
-jupyter notebook classification/random_forest_classifier.ipynb
-```
+# Run Feature Selection
+$ python feature_selection/fold_change.ipynb
+$ python feature_selection/chi_squared.ipynb
+...
 
----
-
-## 📄 Repository Structure
-```
-.
-├── feature_selection/
-│   ├── fold_change.ipynb
-│   ├── chi_squared.ipynb
-│   ├── information_gain.ipynb
-│   ├── lasso.ipynb
-│   ├── recursive_feature_elimination.ipynb
-│   ├── neighborhood_components_analysis.ipynb
-│   ├── random_forest_importance.ipynb
-│   └── compare_features.ipynb
-│
-├── classification/
-│   ├── svm_classifier.ipynb
-│   ├── svm_classifier_fold_change.ipynb
-│   ├── random_forest_classifier.ipynb
-│
-├── processed_data/
-│   ├── miRNA_stage_subtype.csv
-│
-├── results/
-│   ├── fold_change_results.csv
-│   ├── chi_squared_features.csv
-│   ├── information_gain_results.csv
-│   ├── lasso_results.csv
-│
-├── requirements.txt
-├── README.md
-```
+# Train Models
+$ jupyter notebook classification/svm_classifier.ipynb
+$ jupyter notebook classification/random_forest_classifier.ipynb
+$ jupyter notebook classification/saint_classifier.ipynb
