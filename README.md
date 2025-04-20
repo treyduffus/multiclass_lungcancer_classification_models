@@ -22,7 +22,6 @@ We classify lung cancer into the following categories:
 - **0** → Healthy  
 - **1** → Adenocarcinoma  
 - **2** → Squamous Cell Carcinoma  
-- **4** → Mesothelioma  
 
 ---
 
@@ -38,7 +37,6 @@ To improve model performance, we applied **multiple feature selection techniques
 | **LASSO (L1 Regularization)** | Selects important features by penalizing irrelevant ones. |
 | **Recursive Feature Elimination (RFE)** | Iteratively removes the least important features. |
 | **Neighborhood Components Analysis (NCA)** | Learns a transformation that improves classification. |
-| **Transformer-Based Feature Selection** | Uses attention mechanisms for feature ranking. |
 | **Random Forest Feature Importance** | Uses tree-based ranking of features. |
 
 ### **Feature Selection Results**
@@ -77,11 +75,10 @@ Each model is evaluated using:
 - **Hyperparameter tuning** using **GridSearchCV**.
 
 ### **Current Results**
-| **Model** | **Stage Accuracy** | **Subtype Accuracy** |
-|-----------|------------------|------------------|
-| **SVM (Fold-Change Only)** | **53.00%** | **94.47%** |
-| **SVM (All Features)** | **98.16%** | **98.16%** |
-| **Random Forest** | 🚧 **Pending Testing** 🚧 |
+| **Model** | **Diagnosis Accuracy** | **Stage Accuracy** | **Subtype Accuracy** |
+|-----------|-------------------------|--------------------|----------------------|
+| **SVM (All Features)** | **99.0%** | **52.1%** | **49.1%** |
+| **Random Forest** | **99.1%** | **51.6%** | **53.9%** |
 
 ---
 
@@ -90,7 +87,7 @@ Each model is evaluated using:
 - A **user-friendly interface** for **clinicians** to visualize **miRNA expression and model predictions**.
 
 ### **2️⃣ Deep Learning**
-- Implement **Neural Networks (CNNs, Autoencoders)** to enhance classification accuracy.
+- Implement **transformer-based models** and **feature interpretability visualizations**.
 
 ### **3️⃣ Final Validation**
 - **Validate the system using external datasets**.
@@ -104,6 +101,7 @@ Each model is evaluated using:
    ```bash
    git clone https://github.com/your-repo/lung-cancer-classification.git
    cd lung-cancer-classification
+   ```
 
 2. **Create a virtual environment** (optional, but recommended):
    ```bash
@@ -124,6 +122,7 @@ python feature_selection/information_gain.ipynb
 python feature_selection/lasso.ipynb
 python feature_selection/recursive_feature_elimination.ipynb
 python feature_selection/neighborhood_components_analysis.ipynb
+python feature_selection/random_forest_importance.ipynb
 ```
 
 ### **Train & Evaluate SVM Models**
@@ -148,9 +147,8 @@ jupyter notebook classification/random_forest_classifier.ipynb
 │   ├── lasso.ipynb
 │   ├── recursive_feature_elimination.ipynb
 │   ├── neighborhood_components_analysis.ipynb
-│   ├── transformer_feature_selection.ipynb
-│   ├── compare_features.ipynb
-│   └── config.py
+│   ├── random_forest_importance.ipynb
+│   └── compare_features.ipynb
 │
 ├── classification/
 │   ├── svm_classifier.ipynb
